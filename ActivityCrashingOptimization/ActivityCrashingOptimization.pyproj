@@ -1,0 +1,83 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>dd7a6b1e-cff2-4d6d-9b50-aacc00df892d</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>Solver\optimize.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>ActivityCrashingOptimization</Name>
+    <RootNamespace>ActivityCrashingOptimization</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <InterpreterId>Global|PythonCore|2.7</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="NetworkGenerator\generate_beta_distribution_for_activities.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetworkGenerator\generate_correlation_matrix.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetworkGenerator\GenerateInfrastructure.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetworkGenerator\generate_scenarios.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetworkGenerator\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetworkGenerator\nearest_correlation.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetworkGenerator\network_skeleton_generator.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetworkGenerator\project_network_generator.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Solver\branch_bound_impl.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Solver\create_final_optimization_problem.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Solver\optimize.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Solver\penalty_function_helper.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Solver\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Test.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|2.7" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NetworkGenerator\" />
+    <Folder Include="Solver\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
