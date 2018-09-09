@@ -32,9 +32,11 @@ def get_beta_distribution(activity_dic):
         p_ml_diff=np.random.geometric(p=pessimestic_mlikely_diff)
 
         #Calculating most likely and pessimistic time for activity based on above sampled values        
-        ml_value=o_value+o_ml_diff
-        most_likely_duration.append(ml_value)        
-        p_value=ml_value+p_ml_diff
+        i=random.randint(1,10) 
+        ml_value=o_value+i*o_ml_diff       
+        most_likely_duration.append(ml_value) 
+        i=random.randint(1,10) 
+        p_value=ml_value+i*p_ml_diff
         pessimistic_duration.append(p_value)
         
     #for end activity
@@ -89,21 +91,10 @@ def get_project_completion_time(project_network,scenario,outlocation):
     return master.getAttr('ObjVal')
 
 
-def get_t_init_final(project_network,outlocation):
+def get_t_init_final(project_network,outlocation,most_likely_duration,pessimistic_duration):
 
-    no_of_nodes=len(project_network.nodes)-2
-    dic={}
-    for i in range(1,no_of_nodes+1):        
-        value=[]
-        value.append(random.uniform(0, 1))
-        value.append(random.uniform(0, 1))
-        value.append(random.uniform(0, 1))
-        dic[i]=value
-    
-    most_likely,pessimistic=get_beta_distribution(dic)
-
-    most_likely_time=get_project_completion_time(project_network,most_likely,outlocation)
-    pessimistic_time=get_project_completion_time(project_network,pessimistic,outlocation)
+    most_likely_time=get_project_completion_time(project_network,most_likely_duration,outlocation)
+    pessimistic_time=get_project_completion_time(project_network,pessimistic_duration,outlocation)
 
     return most_likely_time,pessimistic_time
 

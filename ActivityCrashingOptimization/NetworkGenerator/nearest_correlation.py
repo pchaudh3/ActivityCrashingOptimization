@@ -53,15 +53,7 @@ def nearcorr(A, tol=[], flag=0, max_iterations=100, n_pos_eig=0,
     except_on_too_many_iterations = False to silently return the best result
     found after max_iterations number of iterations
 
-    ABOUT
-    ~~~~~~
-    This is a Python port by Michael Croucher, November 2014
-    Thanks to Vedran Sego for many useful comments and suggestions.
-
-    Original MATLAB code by N. J. Higham, 13/6/01, updated 30/1/13.
-    Reference:  N. J. Higham, Computing the nearest correlation
-    matrix---A problem from finance. IMA J. Numer. Anal.,
-    22(3):329-343, 2002.
+    
     """
 
     # If input is an ExceededMaxIterationsError object this

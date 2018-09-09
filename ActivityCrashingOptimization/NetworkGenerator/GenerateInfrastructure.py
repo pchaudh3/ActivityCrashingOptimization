@@ -16,9 +16,12 @@ def generate_infrastructure(no_of_nodes,no_of_layers,dic,no_of_scenarios,out_loc
     #Generating the correlation Matrix
     P=generate_correlation_matrix(no_of_nodes,logger)   
 
-    distribution_dic=get_beta_distribution(dic,logger)
+    distribution_dic,most_likely_duration,pessimistic_duration=get_beta_distribution(dic,logger)
 
     #Generate Scenarios
     S=generate_scenarios(no_of_nodes,no_of_scenarios,P,distribution_dic,out_location,scenarios_file_name,logger)
+    print("Scenarios:")
     print(S)
+
+    return most_likely_duration,pessimistic_duration
      

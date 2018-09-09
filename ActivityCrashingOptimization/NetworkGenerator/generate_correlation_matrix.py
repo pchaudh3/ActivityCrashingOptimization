@@ -20,6 +20,9 @@ def generate_correlation_matrix(num_activities,logger):
     A=nearcorr(P)
     logger.debug("Positive Definite Correlation Matrix:")    
     print(A)
+    
+    print(np.linalg.eigvals(A))
+    print(np.all(np.linalg.eigvals(A) >= 0))
 
     return A
 

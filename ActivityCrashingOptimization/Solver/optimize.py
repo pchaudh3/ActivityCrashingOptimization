@@ -36,7 +36,7 @@ def optimize():
         value.append(random.uniform(0, 1))
         dic[i]=value
         
-    GenerateInfrastructure.generate_infrastructure(no_of_nodes,no_of_layers,dic,no_of_scenarios,out_location,project_file_name,scenarios_file_name)
+    most_likely_duration,pessimistic_duration=GenerateInfrastructure.generate_infrastructure(no_of_nodes,no_of_layers,dic,no_of_scenarios,out_location,project_file_name,scenarios_file_name)
     
     project_network_file = open(out_location+project_file_name+".pkl", 'rb')
     project_network = pickle.load(project_network_file)
@@ -49,7 +49,7 @@ def optimize():
     crashtime=[0,0,40,30,50,0,0,0,60,10,0,0]
     crashcost=[0,0,20,60,30,0,0,0,60,40,0,0]    
 
-    t_init,t_final=penalty_function_helper.get_t_init_final(project_network,out_location)
+    t_init,t_final=penalty_function_helper.get_t_init_final(project_network,out_location,most_likely_duration,pessimistic_duration)
     
     branch_bound_impl.branch_bound_algorithm(project_network,scenarios,crashtime,crashcost,t_init,t_final,out_location)
     

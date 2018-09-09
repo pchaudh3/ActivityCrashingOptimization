@@ -10,6 +10,7 @@ import random
 import scipy
 import pickle
 
+
 def generate_scenarios(num_activities,num_scenarios,correlation_matrix,activity_beta_distribution_list,out_location,out_name,logger):
     mean=np.zeros( num_activities )
     B1 = np.random.multivariate_normal(mean, correlation_matrix, num_scenarios)
@@ -18,8 +19,8 @@ def generate_scenarios(num_activities,num_scenarios,correlation_matrix,activity_
     k_list=[]
     if(num_activities==len(activity_beta_distribution_list)):
         for i in range(num_activities):
-            k=np.array(activity_beta_distribution_list[i+1].ppf(B2[:,i]))
-            k_list.append(k)            
+            k=np.array(activity_beta_distribution_list[i+1].ppf(B2[:,i])).astype(int)
+            k_list.append(k)
     else:
         logger.exception("Something wrong in GenerateScenarios")
 

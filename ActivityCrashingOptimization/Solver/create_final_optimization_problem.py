@@ -80,8 +80,8 @@ def create_final_optimization_problem(project_network,scenario,crashtime,crashco
     
     #constraints for penalty calculation    
     for j in range(20):
-        f1=(1.5**(t[j]-t_init))-1
-        f2=math.log((1.5**(t[j]-t_init)), 2)
+        f1=1.5**(t[j]-t_init)-1
+        f2=math.log(1.5*(1.5**(t[j]-t_init))) 
         master.addConstr(z['z']>=f1 + f2*(w['w']-t[j]))
 
     #Debug
